@@ -8,20 +8,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import warnings
-import os
 warnings.filterwarnings('ignore')
 
 st.set_page_config(layout="wide")
 config = {'responsive': False}
 
-file_path1 = os.path.abspath("datatransaksi2023.csv")
-file_path2 = os.path.abspath("datauser2023.csv")
-file_path3 = os.path.abspath("dataproduk2023.csv")
-
 # Prepare the dataset
-df1 = pd.read_csv(file_path1, sep=';')
-df2 = pd.read_csv(file_path2)
-df3 = pd.read_csv(file_path3, sep=';')
+df1 = pd.read_csv("datatransaksi2023.csv", sep=';')
+df2 = pd.read_csv("datauser2023.csv")
+df3 = pd.read_csv("dataproduk2023.csv", sep=';')
 
 # Data cleaning and preprocessing
 df2['Status'] = df2['Status'].str.capitalize()
