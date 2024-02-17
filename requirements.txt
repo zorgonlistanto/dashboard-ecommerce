@@ -1,8 +1,5 @@
 streamlit
 pandas
-plotly.graph_objs
-plotly.io
-plotly.subplots
+plotly
 numpy
-matplotlib.pyplot
-warnings
+matplotlib
