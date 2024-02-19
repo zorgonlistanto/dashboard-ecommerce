@@ -280,3 +280,57 @@ with col2:
 	)
 
 	st.plotly_chart(fig6, config=config)
+
+st.subheader('Penjualan Produk Harian')
+
+# Create figure and add dropdown
+fig8 = go.Figure()
+fig8.update_layout(
+    updatemenus=[
+        dict(
+            buttons=list([
+                dict(label="Product A",
+                     method="update",
+                     args=[{"visible": [True, False, False, False, False]},
+                           {"title": "Daily Customer Sales in Product A"}]),
+                dict(label="Product B",
+                     method="update",
+                     args=[{"visible": [False, True, False, False, False]},
+                           {"title": "Daily Customer Sales in Product B"}]),
+                dict(label="Product C",
+                     method="update",
+                     args=[{"visible": [False, False, True, False, False]},
+                           {"title": "Daily Customer Sales in Product C"}]),
+                dict(label="Product D",
+                     method="update",
+                     args=[{"visible": [False, False, False, True, False]},
+                           {"title": "Daily Customer Sales in Product D"}]),
+                dict(label="Product E",
+                     method="update",
+                     args=[{"visible": [False, False, False, False, True]},
+                           {"title": "Daily Customer Sales in Product E"}])
+            ]),
+            direction="down",
+            showactive=True,
+            x=0,
+            xanchor="left",
+            y=1.1,
+            yanchor="top"
+        ),
+    ]
+)
+
+# Add traces
+fig8.add_trace(go.Scatter(x=df4_A['Date'], y=df4_A['Sales'], visible=True))
+fig8.add_trace(go.Scatter(x=df4_B['Date'], y=df4_B['Sales'], visible=False))
+fig8.add_trace(go.Scatter(x=df4_C['Date'], y=df4_C['Sales'], visible=False))
+fig8.add_trace(go.Scatter(x=df4_D['Date'], y=df4_D['Sales'], visible=False))
+fig8.add_trace(go.Scatter(x=df4_E['Date'], y=df4_E['Sales'], visible=False))
+
+fig8.update_layout(
+    title="Daily Customer Sales",
+    xaxis_title="Date",
+    yaxis_title="Sales"
+)
+
+st.plotly_chart(fig8, config=config)
